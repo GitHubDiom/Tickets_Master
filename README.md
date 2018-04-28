@@ -17,6 +17,7 @@
      pip install requests,pprint,docopt,prettytable
 
 · 数据由查询12306火车票返回json获取，通过分析其数据内容，将车次信息打印至屏幕中，对其输出仍需美化
+
 · 对data暂时还没有做出处理，需按照 year-mouth-day 如 2018-05-01的格式进行输入，否则会出现Json读取错误
 
 
