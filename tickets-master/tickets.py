@@ -90,12 +90,10 @@ class TrainsCheck(object):
     'leftTicketDTO.from_station={}&'
     'leftTicketDTO.to_station={}&'
     'purpose_codes=ADULT'
-        )
-    
-    
+        )    
     def __init__(self):
         self.arguments = docopt(__doc__)
-        print(self.arguments)
+        #print(self.arguments)
         self.from_station = stations.get_telecode(self.arguments['<from>'])
         self.to_station  = stations.get_telecode(self.arguments['<to>'])    
         self.date = self.arguments['<date>']
@@ -106,9 +104,11 @@ class TrainsCheck(object):
     def request_url(self):
         return self.url.format(self.date , self.from_station, self.to_station)
     
-    
+    #2018-04-28
     def run(self):
+        #print(self.request_url)
         r= requests.get(self.request_url,verify=False)
+        #print(r.json())
         trains = r.json()['data']['result']
         TrainsInfo(trains,self.options).pretty_print()
 
